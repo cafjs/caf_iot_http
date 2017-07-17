@@ -1,0 +1,43 @@
+{
+    "name": "top",
+    "env" : {
+        "myId" : "process.env.MY_ID||foo-ca1",
+        "appProtocol" : "process.env.APP_PROTOCOL||http",
+        "appPublisher" : "process.env.APP_PUBLISHER||root",
+        "appLocalName" : "process.env.APP_LOCAL_NAME||helloiot",
+        "appSuffix" : "process.env.APP_SUFFIX||vcap.me:3000",
+        "interval": "process.env.INTERVAL||1000"
+    },
+    "components": [
+        {
+            "name": "iot",
+            "components": [
+                {
+                    "name": "log",
+                    "env" : {
+                        "logLevel" : "DEBUG"
+                    }
+                },
+                {
+                    "module": "../../../index.js#plug_iot",
+                    "name": "http",
+                    "description": "Access  external http services.",
+                    "env" : {
+                        "maxRetries" : "$._.env.maxRetries",
+                        "retryDelay" : "$._.env.retryDelay",
+                        "cloudSync" : "process.env.CLOUD_SYNC||true"
+                    },
+                    "components" : [
+                        {
+                            "module": "../../../index.js#proxy_iot",
+                            "name": "proxy",
+                            "description": "Proxy to access external http services",
+                            "env" : {
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
