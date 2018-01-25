@@ -1,18 +1,18 @@
 {
     "name": "caf_iot_http",
     "description": "Cloud Assistant library to access external http services.",
-    "version": "0.2.3",
+    "version": "0.3.0",
     "author": "Antonio Lain <antlai@cafjs.com>",
     "dependencies": {
         "request": "^2.81.0",
         "JSONStream": "^1.3.1",
         "event-stream" : "^3.3.4",
-        "caf_iot" : "^0.2.0"
+        "caf_iot" : "^0.3.0"
     },
     "devDependencies": {
-        "eslint": "3.1.X",
+        "eslint": "^3.1.1",
         "nodeunit" : ">=0.9",
-        "caf_core" : "^0.2.0",
+        "caf_core" : "^0.3.0",
         "jsdoc": "^3.4.2"
     },
     "main": "index",
