@@ -1,15 +1,15 @@
-var hello = require('./hello/main.js');
-var helloIoT = require('./hello/iot/main.js');
-var caf_iot = require('caf_iot');
-var caf_components = caf_iot.caf_components;
-var cli = caf_iot.caf_cli;
-var myUtils = caf_components.myUtils;
-var async = caf_components.async;
-var app = hello;
-var appIoT = helloIoT;
-var crypto = require('crypto');
-var fs = require('fs');
-var path = require('path');
+const hello = require('./hello/main.js');
+const helloIoT = require('./hello/iot/main.js');
+const caf_iot = require('caf_iot');
+const caf_components = caf_iot.caf_components;
+const cli = caf_iot.caf_cli;
+const myUtils = caf_components.myUtils;
+const async = caf_components.async;
+const app = hello;
+const appIoT = helloIoT;
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
 
 process.on('uncaughtException', function (err) {
     console.log("Uncaught Exception: " + err);
@@ -17,14 +17,14 @@ process.on('uncaughtException', function (err) {
     process.exit(1);
 });
 
-var CA_NAME = 'antonio-' + crypto.randomBytes(16).toString('hex');
+const CA_NAME = 'antonio-' + crypto.randomBytes(16).toString('hex');
 process.env['MY_ID'] = CA_NAME;
 
 /* Assumes a python bodysnatcher service running locally at port 7090*/
 
 module.exports = {
     setUp: function (cb) {
-        var self = this;
+        const self = this;
         app.load(null, {name: 'top'}, 'framework.json', null,
                  function(err, $) {
                      if (err) {
@@ -39,7 +39,7 @@ module.exports = {
                  });
     },
     tearDown: function (cb) {
-        var self = this;
+        const self = this;
         if (!this.$) {
             cb(null);
         } else {
@@ -53,7 +53,7 @@ module.exports = {
         async.series([
             function(cb) {
                 console.log('**********1');
-                var self = this;
+                const self = this;
                 appIoT.load(null, {name: 'topIoT'}, null, null,
                  function(err, $) {
                      if (err) {
@@ -80,7 +80,7 @@ module.exports = {
                                               }});
                 var id = null;
                 s.onopen = function() {
-                    var cb1 = function(err, data) {
+                    const cb1 = function(err, data) {
                         test.ifError(err);
                         console.log('GOT: '+ JSON.stringify(data));
                         cb(err, data);
