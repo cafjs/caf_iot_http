@@ -18,6 +18,7 @@ It runs in the device not in the cloud.
 
 ### iot.json
 
+```
     {
             "module": "caf_iot_http#plug_iot",
             "name": "http",
@@ -37,6 +38,7 @@ It runs in the device not in the cloud.
                 }
             ]
     }
+```
 
 where `cloudSync` set to `false` avoids a cloud roundtrip while processing http
 stream events.
