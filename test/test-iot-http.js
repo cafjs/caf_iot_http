@@ -73,7 +73,7 @@ module.exports = {
             },
             function(cb) {
                 console.log('**********3');
-                s = new cli.Session('http://root-helloiot.vcap.me:3000',
+                s = new cli.Session('http://root-helloiot.localtest.me:3000',
                                     CA_NAME, {from: CA_NAME,
                                               log: function(x) {
                                                   console.log(x);
